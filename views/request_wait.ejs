@@ -15,10 +15,10 @@ background:rgba(0,0,0,0.7);
 }
 .overlay-content{
 position:relative;
-top:50%;
-width:50%;
+top:10%;
 text-align:center;
 margin:auto;
+color:#fff;
 }
 .overlay .closebtn{
 position:absolute;
@@ -74,41 +74,71 @@ color:#fff;
 
 
     <div>
-    <label for="waiting_team_label">신청한 프리랜서 목록</label><br>
-    <table id="#waiting_team_table" class="table table-hover text-center">
-        <thead>
-            <tr>
+        <label for="waiting_team_label">신청한 프리랜서 목록</label><br>
+        <table id="waiting_team_table" class="table table-hover text-center">
+            <thead>
                 <th>팀명 및 아이디</th>
-            </tr>
-        </thead>
-        <tbody> <td>Team A</td> </tbody>
-        <tbody> <td>Team B</td> </tbody>
-        <tbody> <td>Person A</td> </tbody>
-    </table>
-    <div id="allowOverlay" class="overlay">
-        <span class="closebtn" onclick="closeOverlay('allowOverlay')" title="Close Overlay">&#215</span>
-            <div class="overlay-content">
-                <form>
-                    <label for="rate_label2">평점</label>
-                    <select style= 'width:50px; height:35px;'><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
-                    <button type="submit">확인</button>
-                </form>
-            </div>
+            </thead>
+            <tbody> 
+            <tr><td>Team A</td></tr>
+            <tr><td>Team B</td></tr>
+            <tr><td>Person A</td></tr>
+            </tbody>
+        </table>
+        <div id="idOverlay" class="overlay">
+            <span class="closebtn" onclick="closeOverlay('idOverlay')" title="Close Overlay">&#215</span>
+                <div class="overlay-content">
+                    <form>
+                    <div class="form-group">
+                        <label for="id_label">팀명 or 아이디</label>
+                        <label for="id">temp</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_label">팀원리스트 (팀일 경우에)</label>
+                        <label for="id">4</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="rate_label">평점</label>
+                        <label for="rate">4</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio_label">포트폴리오 정보</label>
+                        <label for="portfolio">XXXX</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="language_label">언어별 능숙도</label>
+                        <label for="language1">Python 1</label>
+                        <label for="language2">Java 2</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="career_label">개발 경력</label>
+                        <label for="career">1년</label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">채택</button>
+                    </div>
+                    </form>
+                </div>
+        </div>
     </div>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>
     $("#waiting_team_table tr").click(function(){  
-    alert("h");
     var tr = $(this);
     var td = tr.children();
     var team_or_id = td.eq(0).text();
+    alert(team_or_id);
+    openOverlay('idOverlay');
+    });
+
     function openOverlay(contentId){
         document.getElementById(contentId).style.display="block";
     }
+
     function closeOverlay(contentId){
         document.getElementById(contentId).style.display="none";
     }
     </script>
-    </div>
 
 
   </form>
